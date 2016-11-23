@@ -10,3 +10,6 @@ planning
         : dropdown
     4. type of assignment.
         : dropdown.
+
+: fetch the values from the form, and store in the database.
+    : this is all javascript stuff.
