@@ -11,14 +11,16 @@ class wrapper{
 	}
 
 	function connect(){
-
-			$this->db= maxdb_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
-			if(!$this->db){
-				echo("cant connect to database. Errorcode: %d\n",maxdb_connect_errno());
+		
+		//connect
+		$this->db=new mysqli(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
+		if($this->db->connect_errno){
+			//no connection, exit
+			return false;
 		}
 		return true;
 	}
-
+	
 	function query($strQuery){
 		if(!$this->connect()){
 			return false;
