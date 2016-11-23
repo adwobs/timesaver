@@ -13,7 +13,7 @@ class functions extends wrapper{
 	}
 
 	function viewAssign(){
-		$strQuery="select name, due_date, work_days, completed_assign";
+		$strQuery="select name, due_date, work_days, completed_assign from assignment";
 		return $this->query($strQuery);
 	}
 

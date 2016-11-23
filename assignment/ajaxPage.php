@@ -1,6 +1,6 @@
 <?php
 	include("functions.php");
-	var $obj=new functions();
+	//$obj=new functions();
 
 if(!isset($_REQUEST['cmd'])){
 	echo "cmd is not provided";
@@ -21,11 +21,12 @@ switch($cmd){
 	break;
 	default:
 	echo "wrong command";
-	break
+	break;
 }
 
 function viewAssign(){
-	if($this->obj->viewAssign()){
+	$obj=new functions();
+	if($obj->viewAssign()){
 		$row=$obj->fetch();
 		$result=array();
 		while($row!=false){
@@ -42,6 +43,7 @@ function viewAssign(){
 }
 
 function addAssign(){
+	$obj=new functions();
 	if(!isset($_REQUEST['uc'])){
 		echo'{"result":0,"message":"data can not be retrieved"}';
 		exit();
@@ -52,7 +54,7 @@ function addAssign(){
 	$due=$_REQUEST['as'];
 	$type=$_REQUEST['us'];
 
-	if($this->obj->addAssign($name,$course,$due,$type)){
+	if($obj->addAssign($name,$course,$due,$type)){
 		echo'{"result":1, message:"assignment added"}';
 	}
 	else{
@@ -61,6 +63,7 @@ function addAssign(){
 }
 
 function completeAssign(){
+	$obj=new functions();
 	if(!isset($_REQUEST['uc'])){
 		echo'{"result":0,"message":"data can not be retrieved"}';
 		exit();
@@ -69,7 +72,7 @@ function completeAssign(){
 	$id=$_REQUEST['uc'];
 	$complete=$_REQUEST['ac'];
 
-	if($this->obj->editAssign($id, $complete)){
+	if($obj->editAssign($id, $complete)){
 		echo'{"result":1, message:"assignment completed"}';
 	}
 	else{

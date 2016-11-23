@@ -1,15 +1,36 @@
 <html>
 <head>
 	<title>Assignment</title>
-	<script></script>
+	<script src="js\jquery-1.12.1.js"></script>
+	<script>
+		function viewAssign(){
+			var ajaxPageUrl="ajaxPage.php?cmd=1";
+			$.ajax(ajaxPageUrl,{async:true, complete:viewComplete});
+		}
+
+		function viewComplete(xhr,status){
+			if(status!="success"){
+				divStatus.innerHTML="loading assignment error";
+				return;
+
+			}
+			else{
+				document.write(xhr.responseText);
+				var object=$.parseJSON(xhr.responseText);
+				if(object.result==0){
+					divStatus.innerHTML=object.message;
+				}
+			}
+		}
+	</script>
 </head>
 
 <body>
 	<div><h1>header: name </h1><br><h4>
 	quote for the day</h4></div>
-	<div><h2>
+	<div><button type="button" onclick="viewAssign()">
 		List of assignment
-	</h2></div>
+	</button></div>
 	<div>Add</div>
 </body>
 </html> 
