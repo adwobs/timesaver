@@ -1,5 +1,5 @@
 <?php
-	include("functions.php");
+	include("../settings/functions.php");
 	//$obj=new functions();
 
 if(!isset($_REQUEST['cmd'])){
