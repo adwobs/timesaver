@@ -32,7 +32,7 @@ CREATE TABLE `courses` (
   KEY `fk_major_idx` (`fk_major`),
   CONSTRAINT `fk_major` FOREIGN KEY (`fk_major`) REFERENCES `majors` (`idmajors`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_yrgroup` FOREIGN KEY (`fk_yrgroup`) REFERENCES `year_group` (`idyear_group`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,7 +41,7 @@ CREATE TABLE `courses` (
 
 LOCK TABLES `courses` WRITE;
 /*!40000 ALTER TABLE `courses` DISABLE KEYS */;
-INSERT INTO `courses` VALUES (1,'operating systems',4,1),(2,'competitive strategy',4,3),(3,'operating systems',4,2),(4,'Africana',3,3);
+INSERT INTO `courses` VALUES (1,'operating systems',4,1),(2,'competitive strategy',4,3),(3,'operating systems',4,2),(4,'Africana',3,3),(5,'data mining',4,3);
 /*!40000 ALTER TABLE `courses` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-22 20:49:13
+-- Dump completed on 2016-11-24  0:20:20

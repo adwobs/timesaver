@@ -16,32 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `assignment`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `assignment`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `assignment` (
-  `aid` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
-  `fk_courses` int(11) NOT NULL,
-  `due_date` date NOT NULL,
-  `completed_assign` bit(1) NOT NULL DEFAULT b'0',
-  `type` enum('homework','project work','group work') NOT NULL,
-  `work_days` int(11) NOT NULL,
-  PRIMARY KEY (`aid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+CREATE TABLE `user` (
+  `iduser` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(45) NOT NULL,
+  `fk_course.id` int(11) NOT NULL,
+  `fk_yr.group` int(11) NOT NULL,
+  PRIMARY KEY (`iduser`),
+  KEY `fk_course.id_idx` (`fk_course.id`),
+  KEY `fk_yr.group_idx` (`fk_yr.group`),
+  CONSTRAINT `fk_course.id` FOREIGN KEY (`fk_course.id`) REFERENCES `courses` (`cid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_yr.group` FOREIGN KEY (`fk_yr.group`) REFERENCES `year_group` (`idyear_group`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `assignment`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `assignment` WRITE;
-/*!40000 ALTER TABLE `assignment` DISABLE KEYS */;
-INSERT INTO `assignment` VALUES (1,'facebook',5,'2016-11-23','\0','homework',2),(2,'final project',2,'2016-12-05','\0','project work',7);
-/*!40000 ALTER TABLE `assignment` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-11-24  0:20:22
+-- Dump completed on 2016-11-24  0:20:20
