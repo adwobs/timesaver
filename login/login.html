@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Compiled and minified CSS -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+    <!-- Include Required Prerequisites -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+    <!-- Include Date Range Picker -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
+
+
+
+</head>
+
+<script>
+        function addUser(){
+            var ajaxPageUrl="UserAjax.php?cmd=1";
+            $.ajax(ajaxPageUrl,{async:true, complete:AddComplete});
+        }
+
+        function AddComplete(xhr,status){
+            if(status!="success"){
+                divStatus.innerHTML="oops! we are having difficulty adding";
+                return;
+            }
+            else{
+                document.write(xhr.responseText);
+                var object=$.parseJSON(xhr.responseText);
+                if(object.result==0){
+                    divStatus.innerHTML=object.message;
+                }
+            }
+        }
+    </script>
+
+<body class="container">
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <form class="form-horizontal">
+        <div class="form-group">
+        <h3>Sorry!, give us a moment to get to know you better</h3>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="What do you like to be called">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" id="inputEmail3" placeholder="What year group do you belong to">
+        </div>
+
+        <!-- both year group and major have to be a drop down-->
+        <div class="form-group">
+            <div class="col-sm-10">
+            <input type="text" class="form-control" id="###" placeholder="and what is your major">
+            </div>
+
+        <div><button type="button" onclick="addUser()">Done</button></div>
+    </form>
+
+    <!-- Compiled and minified JavaScript -->
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

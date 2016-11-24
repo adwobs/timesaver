@@ -19,18 +19,16 @@
 -- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `user` (
   `iduser` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) NOT NULL,
-  `fk_course.id` int(11) NOT NULL,
   `fk_yr.group` int(11) NOT NULL,
+  `fk_major` int(11) NOT NULL,
   PRIMARY KEY (`iduser`),
-  KEY `fk_course.id_idx` (`fk_course.id`),
   KEY `fk_yr.group_idx` (`fk_yr.group`),
-  CONSTRAINT `fk_course.id` FOREIGN KEY (`fk_course.id`) REFERENCES `courses` (`cid`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  KEY `fk_major_idx` (`fk_major`),
   CONSTRAINT `fk_yr.group` FOREIGN KEY (`fk_yr.group`) REFERENCES `year_group` (`idyear_group`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
