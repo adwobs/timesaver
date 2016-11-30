@@ -6,6 +6,7 @@ planning
         : textbox
     2. date due
         : date picker
+            : we're using a plugin for this functionality.
     3. course of the assignment
         : dropdown
     4. type of assignment.
